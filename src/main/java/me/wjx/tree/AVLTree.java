@@ -9,32 +9,62 @@ public class AVLTree {
      */
     private Node root;
 
+    /**
+     * 保存节点数据
+     */
     private class Node {
+        /**
+         * 键
+         */
         private int key;
+        /**
+         * 平衡点
+         */
         private int balance;
+        /**
+         * 高度
+         */
         private int height;
+        /**
+         * 左节点、右节点、父节点
+         */
         private Node left, right, parent;
 
+        /**
+         * 构造函数
+         * @param k
+         * @param p
+         */
         Node(int k, Node p) {
             key = k;
             parent = p;
         }
     }
 
+    /**
+     * 插入数据
+     * @param key 键，键重复插入失败
+     * @return
+     */
     public boolean insert(int key) {
+        //判断根节点是否为空，为空直接设置为根节点
         if (root == null) {
             root = new Node(key, null);
         } else {
+            //根节点
             Node n = root;
+            //父节点
             Node parent;
             while (true) {
+                //不允许插入重复值
                 if (n.key == key) {
                     return false;
                 }
-
+                //父节点赋值给跟节点
                 parent = n;
-
+                //如果节点插入的key小于父节点，放在左子节点
                 boolean goLeft = n.key > key;
+                //
                 n = goLeft ? n.left : n.right;
 
                 if (n == null) {
@@ -102,29 +132,26 @@ public class AVLTree {
 
     private void rebalance(Node n) {
         setBalance(n);
-
         if (n.balance == -2) {
+
             if (height(n.left.left) >= height(n.left.right)) {
                 n = rotateRight(n);
             } else {
                 n = rotateLeftThenRight(n);
             }
-
         } else if (n.balance == 2) {
-            if (height(n.right.right) >= height(n.right.left)) {
+            if (height(n.right.right) >= height(n.right.left)) {//判断是否是右的情况
                 n = rotateLeft(n);
             } else {
                 n = rotateRightThenLeft(n);
             }
         }
-
         if (n.parent != null) {
             rebalance(n.parent);
         } else {
             root = n;
         }
     }
-
     private Node rotateLeft(Node a) {
 
         Node b = a.right;

@@ -23,5 +23,7 @@ public class App {
         tree.insert(18);
         tree.insert(29);
         tree.printBalance();
+
+
     }
 }
