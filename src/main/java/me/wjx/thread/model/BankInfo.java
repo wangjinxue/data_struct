@@ -21,7 +21,7 @@ public class BankInfo {
         this.money = money;
     }
 
-    public void increment() {
+    public  void increment() {
         lock.lock();
         try {
             money =money+ 1;
