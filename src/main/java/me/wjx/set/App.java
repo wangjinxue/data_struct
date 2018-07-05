@@ -1,6 +1,10 @@
 package me.wjx.set;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * @author wjx
@@ -27,5 +31,11 @@ public class App {
         list.add("4");
         list.add("5");
         list.remove("2");
+        PriorityBlockingQueue priorityBlockingQueue=new PriorityBlockingQueue(100, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return 0;
+            }
+        });
     }
 }
