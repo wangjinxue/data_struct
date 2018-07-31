@@ -1,6 +1,5 @@
 package me.wjx.linkedlist;
 
-import me.wjx.System1;
 
 import java.util.LinkedList;
 
@@ -44,6 +43,5 @@ public class App {
         list.insert(21);
         list.insert(111);
         list.insert(12);
-        list.forEach(System1::println);
     }
 }

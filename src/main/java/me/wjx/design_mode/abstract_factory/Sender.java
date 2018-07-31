@@ -6,7 +6,7 @@ package me.wjx.design_mode.abstract_factory;
  */
 public interface Sender {
     /**
-     * s
+     * 发送
      */
     void sender();
 }
